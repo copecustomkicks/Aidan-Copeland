@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aidan Copeland</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:image" content="icon-512.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Aidan Copeland — mechanical engineering student at the University of Florida, product developer and entrepreneur. Work across footwear, engineering, ventures and AI.">
+<meta property="og:title" content="Aidan Copeland — Built from curiosity">
+<meta property="og:description" content="Engineer, entrepreneur and creator exploring the intersection of design, technology and business.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{background:#0a0a0a;color-scheme:dark}
+body{margin:0;background:#0a0a0a;color:#ffffff;font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#ffc285}
+a:hover{color:#ffffff}
+::selection{background:oklch(0.8 0.160 55 / .35)}
+:focus-visible{outline:2px solid oklch(0.82 0.160 55);outline-offset:4px}
+@media (prefers-reduced-motion: reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#0a0a0a;color:#ffffff;font-family:'Geist',system-ui,sans-serif;overflow-x:clip">
+
+<a href="#main" style="position:fixed;left:16px;top:-60px;z-index:90;padding:10px 16px;border-radius:8px;background:#ffffff;color:#0a0a0a;text-decoration:none" style-focus="top:16px">Skip to content</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:center;padding:14px clamp(12px,2vw,24px);pointer-events:none">
+  <nav aria-label="Primary" style="pointer-events:auto;width:100%;max-width:1320px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 7px 7px 20px;border-radius:999px;background:rgba(13,15,20,0.62);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border:1px solid rgba(255,255,255,0.07);box-shadow:0 10px 40px -20px rgba(0,0,0,0.8)">
+    <a href="#/" aria-label="Aidan Copeland — home" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#ffffff;font-weight:400;font-size:15px;letter-spacing:-0.01em;white-space:nowrap">
+      <span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:oklch(0.82 0.160 55);box-shadow:0 0 14px oklch(0.82 0.160 55 / .8)"></span>
+      <span>Aidan Copeland</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ul style="display:flex;gap:2px;list-style:none;margin:0;padding:0">
+        <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="4">
+          <li><a href="{{ l.href }}" onClick="{{ l.onClick }}" aria-current="{{ l.current }}" style="display:block;padding:10px 16px;border-radius:999px;font-size:14px;color:{{ l.color }};background:{{ l.bg }};text-decoration:none;transition:color .2s,background .2s">{{ l.label }}</a></li>
+        </sc-for>
+      </ul>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:6px">
+      <div role="radiogroup" aria-label="Experience mode" onKeyDown="{{ toggleKey }}" style="position:relative;display:grid;grid-template-columns:1fr 1fr;padding:3px;border-radius:999px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08)">
+        <span aria-hidden="true" style="position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.06));box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 18px -6px rgba(0,0,0,0.7),0 0 22px -6px oklch(0.8 0.160 55 / .45);transform:{{ thumbX }};transition:transform .5s cubic-bezier(.2,.8,.2,1)"></span>
+        <button type="button" role="radio" aria-checked="{{ modeExplore }}" aria-label="Explore mode" tabIndex="{{ exploreTab }}" onClick="{{ setExplore }}" style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border:0;background:transparent;border-radius:999px;font:inherit;font-size:13.5px;cursor:pointer;color:{{ exploreColor }};transition:color .3s">
+          <span aria-hidden="true">✦</span><span>{{ exploreLabel }}</span>
+        </button>
+        <button type="button" role="radio" aria-checked="{{ modeOverview }}" aria-label="Overview mode" tabIndex="{{ overviewTab }}" onClick="{{ setOverview }}" style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border:0;background:transparent;border-radius:999px;font:inherit;font-size:13.5px;cursor:pointer;color:{{ overviewColor }};transition:color .3s">
+          <span aria-hidden="true">▤</span><span>{{ overviewLabel }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="Menu" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#ffffff;display:grid;place-items:center;cursor:pointer;font-size:18px">{{ menuGlyph }}</button>
+      </sc-if>
+    </div>
+  </nav>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:55;background:rgba(8,9,12,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:100px 28px 40px">
+    <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="4">
+      <a href="{{ l.href }}" onClick="{{ l.onMenuClick }}" style="font-size:44px;letter-spacing:-0.03em;color:#ffffff;text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.07)">{{ l.label }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<main id="main" style="opacity:{{ mainOpacity }};transform:{{ mainShift }};transition:opacity .28s ease,transform .5s cubic-bezier(.2,.8,.2,1)">
+
+<!-- ═════════ EXPLORE HOME (desktop) ═════════ -->
+<sc-if value="{{ rExploreStage }}" hint-placeholder-val="{{ true }}">
+  <section aria-label="Explore — interactive exhibition" style="position:relative;height:{{ stageH }}px;overflow:hidden;background:radial-gradient(60% 50% at 50% 46%,rgba(124,58,237,0.14),transparent 70%),radial-gradient(40% 40% at 85% 15%,oklch(0.5 0.12 300 / .14),transparent 70%),radial-gradient(45% 45% at 10% 85%,oklch(0.5 0.1 50 / .12),transparent 70%),linear-gradient(180deg,#0a0a0a 0%,#0a0a0a 60%,#0a0a0a 100%)">
+    <div aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(56vw,760px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,0.05)"></div>
+    <div aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(86vw,1240px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1px dashed rgba(255,255,255,0.035)"></div>
+    <div aria-hidden="true" style="position:absolute;left:50%;bottom:-55%;width:150%;height:80%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,122,23,0.06),transparent)"></div>
+
+    <sc-for list="{{ artLines }}" as="ln" hint-placeholder-count="0">
+      <div aria-hidden="true" style="position:absolute;left:{{ ln.left }};top:{{ ln.top }};width:{{ ln.len }};height:1px;transform-origin:0 50%;transform:{{ ln.tf }};background:{{ ln.bg }};pointer-events:none"></div>
+    </sc-for>
+
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,42vw);text-align:center;z-index:2;pointer-events:none">
+      <a href="#/about" data-reveal="0" aria-label="About Aidan Copeland" style="pointer-events:auto;display:inline-flex;flex-direction:column;align-items:center;gap:10px;color:inherit;text-decoration:none">
+        <span style="position:relative;display:block;width:clamp(190px,15.6vw,250px);aspect-ratio:872/787" style-hover="filter:brightness(1.05)"><span aria-hidden="true" style="position:absolute;left:50%;top:44%;width:96%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,236,200,0.22) 0%,rgba(255,226,180,0.10) 42%,rgba(255,220,170,0) 70%)"></span><img src="media/aidan-cutout.png" alt="Aidan Copeland" style="position:relative;width:100%;height:100%;object-fit:contain;display:block;filter:brightness(1.14) drop-shadow(0 0 1.5px rgba(255,244,222,0.6)) drop-shadow(0 0 12px rgba(255,232,190,0.32));-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,#000 78%,transparent 100%)"></span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <span style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#a7aab0;text-transform:uppercase">About</span>
+          <span style="font-size:16px;font-weight:400;color:#ffffff;letter-spacing:-0.01em">{{ site.name }}</span>
+        </span>
+      </a>
+      <h1 data-reveal="120" style="margin:26px 0 0;font-size:clamp(56px,6.6vw,108px);line-height:0.94;letter-spacing:-0.035em;font-weight:400;color:#ffffff">{{ headline1 }}<br><em style="font-style:normal;font-family:'Geist',system-ui,sans-serif;font-style:normal;font-weight:400;letter-spacing:-0.02em;color:oklch(0.88 0.096 55)">{{ headline2 }}</em></h1>
+      <p data-reveal="240" style="margin:26px auto 0;max-width:470px;font-size:18px;line-height:1.55;color:#a7aab0;text-wrap:pretty">{{ site.intro }}</p>
+      <p data-reveal="360" style="margin:34px 0 0;display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Geist Mono',monospace;font-size:13px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">
+        <span aria-hidden="true" style="width:28px;height:1px;background:rgba(255,255,255,0.25)"></span>Explore my world — select an object<span aria-hidden="true" style="width:28px;height:1px;background:rgba(255,255,255,0.25)"></span>
+      </p>
+    </div>
+
+    <sc-for list="{{ stageArtifacts }}" as="a" hint-placeholder-count="6">
+      <a href="{{ a.href }}" aria-label="{{ a.aria }}" onClick="{{ a.open }}" onMouseEnter="{{ a.enter }}" onMouseLeave="{{ a.leave }}" onFocus="{{ a.enter }}" onBlur="{{ a.leave }}" onMouseMove="{{ a.tilt }}" style="position:absolute;left:{{ a.left }};top:{{ a.top }};width:{{ a.w }};height:{{ a.h }};z-index:{{ a.z }};display:block;color:inherit;text-decoration:none;opacity:{{ a.op }};transition:opacity .5s ease;cursor:pointer">
+        <div data-float="1" data-depth="{{ a.depth }}" data-i="{{ $index }}" style="width:100%;height:100%;will-change:transform">
+          <div style="width:100%;height:100%;transform:{{ a.scale }};transition:transform .6s cubic-bezier(.2,.8,.2,1)">
+            <div data-tilt="1" style="position:relative;width:100%;height:100%;border-radius:{{ a.radius }};overflow:hidden;border:1px solid {{ a.border }};box-shadow:{{ a.shadow }};background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a);transition:transform .25s ease-out,box-shadow .6s,border-color .6s">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 110%,{{ a.glow }},transparent 70%);transition:opacity .6s"></div>
+              <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,0.12),rgba(255,255,255,0) 38%)"></div>
+              {{ a.imageEl }}
+              <sc-if value="{{ a.noImg }}"><span style="position:absolute;left:0;right:0;bottom:12px;text-align:center;padding:0 10px;font-family:'Geist Mono',monospace;font-size:10.5px;line-height:1.3;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ a.hint }}</span></sc-if>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;left:{{ a.lbLeft }};right:{{ a.lbRight }};top:{{ a.lbTop }};transform:{{ a.lbTf }};text-align:{{ a.lbAlign }};width:230px;pointer-events:none">
+          <div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:{{ a.color }};text-transform:uppercase">{{ a.themeLabel }}</div>
+          <div style="margin-top:5px;font-size:15px;font-weight:400;letter-spacing:-0.01em;color:{{ a.titleColor }};transition:color .3s">{{ a.label }}</div>
+          <div style="margin-top:4px;font-size:13.5px;line-height:1.45;color:#a7aab0;opacity:{{ a.descOp }};transition:opacity .35s">{{ a.text }}</div>
+        </div>
+      </a>
+    </sc-for>
+
+    <a href="#threads" onClick="{{ toThreads }}" style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:0.1em">
+      <span>Scroll</span><span aria-hidden="true" style="width:1px;height:28px;background:linear-gradient(180deg,rgba(255,255,255,0.4),transparent)"></span>
+    </a>
+  </section>
+</sc-if>
+
+<!-- ═════════ EXPLORE HOME (mobile) ═════════ -->
+<sc-if value="{{ rExploreMobile }}" hint-placeholder-val="{{ false }}">
+  <section aria-label="Explore" style="padding:128px 0 40px;background:radial-gradient(80% 50% at 50% 20%,rgba(124,58,237,0.154),transparent 70%)">
+    <div style="padding:0 22px">
+      <p data-reveal="0" style="margin:0;font-size:16px;font-weight:400;color:#ffffff">{{ site.name }}</p>
+      <h1 data-reveal="100" style="margin:16px 0 0;font-size:clamp(52px,15vw,76px);line-height:0.94;letter-spacing:-0.035em;font-weight:400">{{ headline1 }}<br><em style="font-style:normal;font-family:'Geist',system-ui,sans-serif;font-style:normal;font-weight:400;color:oklch(0.88 0.096 55)">{{ headline2 }}</em></h1>
+      <p data-reveal="200" style="margin:20px 0 0;font-size:17px;line-height:1.55;color:#a7aab0">{{ site.intro }}</p>
+      <p style="margin:36px 0 16px;font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Explore my world — swipe</p>
+    </div>
+    <div style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 22px 20px;scrollbar-width:none">
+      <sc-for list="{{ artifacts }}" as="a" hint-placeholder-count="3">
+        <a href="{{ a.href }}" aria-label="{{ a.aria }}" style="flex:0 0 {{ cardBasis }};scroll-snap-align:center;display:flex;flex-direction:column;gap:14px;color:inherit;text-decoration:none">
+          <div style="position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.09);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+            <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 110%,{{ a.glowMob }},transparent 70%)"></div>
+            {{ a.imageEl }}
+            <sc-if value="{{ a.noImg }}"><span style="position:absolute;left:16px;bottom:14px;font-family:'Geist Mono',monospace;font-size:11px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ a.hint }}</span></sc-if>
+          </div>
+          <div>
+            <div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:{{ a.color }};text-transform:uppercase">{{ a.themeLabel }}</div>
+            <div style="margin-top:5px;font-size:18px;font-weight:400">{{ a.label }}</div>
+            <div style="margin-top:4px;font-size:14.5px;line-height:1.45;color:#a7aab0">{{ a.text }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ═════════ EXPLORE: threads + connections ═════════ -->
+<sc-if value="{{ rExploreHome }}" hint-placeholder-val="{{ true }}">
+  <section id="threads" aria-labelledby="threads-h" style="max-width:1320px;margin:0 auto;padding:clamp(80px,12vw,160px) clamp(20px,4vw,48px) 40px">
+    <h2 id="threads-h" data-reveal="80" style="margin:0;max-width:820px;font-size:clamp(36px,4.6vw,64px);line-height:1.02;letter-spacing:-0.03em;font-weight:400;text-wrap:balance">Engineer by training. <em style="font-style:normal;font-family:'Geist',system-ui,sans-serif;font-weight:400">Builder by habit.</em></h2>
+    <div style="margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:40px 28px">
+      <sc-for list="{{ threads }}" as="t" hint-placeholder-count="4">
+        <div data-reveal="{{ t.delay }}">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-top:22px;border-top:1px solid {{ t.line }};height:100%">
+            <span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ t.num }}</span>
+            <a href="{{ t.href }}" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 26px;border-radius:999px;border:1px solid {{ t.color }};color:{{ t.color }};text-decoration:none;font-size:28px;letter-spacing:-0.02em;font-weight:400;transition:background .25s,color .25s" style-hover="background:rgba(255,255,255,0.06)">{{ t.label }}<span aria-hidden="true" style="font-size:18px">→</span></a>
+            <span style="font-size:16px;line-height:1.55;color:#a7aab0;text-wrap:pretty">{{ t.blurb }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-labelledby="connect-h" style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,110px) clamp(20px,4vw,48px) clamp(80px,10vw,120px)">
+    <h2 id="connect-h" data-reveal="0" style="margin:0 0 36px;font-size:clamp(34px,4vw,56px);line-height:1.04;letter-spacing:-0.03em;font-weight:400">Career map</h2>
+    <sc-if value="{{ showGraph }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;width:{{ gW }};height:{{ gH }};border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:radial-gradient(60% 60% at 40% 50%,rgba(124,58,237,0.098),transparent 70%),repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 1px,transparent 1px 60px),repeating-linear-gradient(90deg,rgba(255,255,255,0.025) 0 1px,transparent 1px 60px);overflow:hidden">
+        <sc-for list="{{ gTicks }}" as="tk" hint-placeholder-count="0">
+          <div aria-hidden="true" style="position:absolute;left:{{ tk.left }};top:0;bottom:0;width:1px;background:repeating-linear-gradient(180deg,rgba(255,255,255,0.18) 0 4px,transparent 4px 10px)"></div>
+          <span aria-hidden="true" style="position:absolute;left:{{ tk.left }};bottom:12px;transform:{{ tk.tf }};font-family:'Geist Mono',monospace;font-size:12.5px;font-weight:500;color:#dadbdf;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;padding:2px 6px;background:#0a0a0a">{{ tk.label }}</span>
+        </sc-for>
+        <sc-for list="{{ gEdges }}" as="e" hint-placeholder-count="0">
+          <div aria-hidden="true" style="position:absolute;left:{{ e.left }};top:{{ e.top }};width:{{ e.len }};height:1px;transform-origin:0 50%;transform:{{ e.tf }};background:{{ e.bg }};opacity:{{ e.op }};transition:opacity .4s"></div>
+        </sc-for>
+        <sc-for list="{{ gEdges }}" as="e" hint-placeholder-count="0">
+          <span aria-hidden="true" style="position:absolute;left:{{ e.lx }};top:{{ e.ly }};transform:translate(-50%,-50%);padding:3px 8px;border-radius:6px;background:rgba(8,9,12,0.85);font-family:'Geist Mono',monospace;font-size:11px;color:#a7aab0;white-space:nowrap;opacity:{{ e.lop }};transition:opacity .3s;pointer-events:none;text-transform:uppercase;letter-spacing:0.1em;z-index:1">{{ e.label }}</span>
+        </sc-for>
+        <sc-for list="{{ gNodes }}" as="n" hint-placeholder-count="9">
+          <a href="{{ n.href }}" onMouseEnter="{{ n.enter }}" onMouseLeave="{{ n.leave }}" onFocus="{{ n.enter }}" onBlur="{{ n.leave }}" style="position:absolute;left:{{ n.left }};top:{{ n.top }};transform:{{ n.tf }};display:flex;flex-direction:column;align-items:{{ n.ai }};gap:8px;color:inherit;text-decoration:none;opacity:{{ n.op }};transition:opacity .35s;z-index:2">
+            <span aria-hidden="true" style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid {{ n.color }};background:{{ n.dotBg }};box-shadow:{{ n.ring }};transition:all .35s"></span>
+            <span style="padding:3px 8px;border-radius:5px;background:rgba(10,10,10,0.88);font-size:15px;font-weight:400;color:#ffffff;white-space:nowrap;text-align:{{ n.align }}">{{ n.title }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showChainsJourney }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ storyChains }}" as="s" hint-placeholder-count="2">
+        <div data-reveal="{{ s.delay }}" style="padding:28px clamp(20px,3vw,36px);border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.012));border:1px solid rgba(255,255,255,0.07)">
+          <div style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;margin-bottom:18px;text-transform:uppercase;letter-spacing:0.1em">{{ s.label }}</div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 10px">
+            <sc-for list="{{ s.nodes }}" as="n" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:10px">
+                <a href="{{ n.href }}" style="display:flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(8,9,12,0.6);color:#ffffff;text-decoration:none;font-size:15px;transition:border-color .25s,background .25s" style-hover="border-color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.05)"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:{{ n.color }}"></span>{{ n.title }}</a>
+                <sc-if value="{{ n.notLast }}"><span style="display:flex;align-items:center;gap:8px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em"><span aria-hidden="true">→</span></span></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+    <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+      <a href="#/journey" style="display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:#ffffff;color:#0a0a0a;text-decoration:none;font-size:15px;font-weight:400">Open the full map →</a>
+      <a href="#/work" style="display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);color:#ffffff;text-decoration:none;font-size:15px">All work</a>
+    </div>
+  </section>
+
+</sc-if>
+
+<!-- ═════════ OVERVIEW HOME ═════════ -->
+<sc-if value="{{ rOverviewHome }}" hint-placeholder-val="{{ false }}">
+  <section aria-label="Introduction" style="max-width:1320px;margin:0 auto;padding:clamp(120px,14vw,170px) clamp(20px,4vw,48px) 64px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:end">
+      <div>
+        <p data-reveal="0" style="margin:0;font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Engineer · Entrepreneur · Creator</p>
+        <h1 data-reveal="80" style="margin:20px 0 0;font-size:clamp(60px,8.4vw,136px);line-height:0.9;letter-spacing:-0.055em;font-weight:400">Aidan<br>Copeland</h1>
+        <p data-reveal="160" style="margin:32px 0 0;max-width:560px;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:#dadbdf;text-wrap:pretty">{{ site.intro }}</p>
+        <div data-reveal="240" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#/work" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#ffffff;color:#0a0a0a;text-decoration:none;font-size:15px;font-weight:400">Selected work</a>
+          <a href="{{ resumeHref }}" onClick="{{ resumeClick }}" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);color:#ffffff;text-decoration:none;font-size:15px">Résumé <span style="font-family:'Geist Mono',monospace;font-size:11.5px;color:{{ resumeNoteColor }};text-transform:uppercase;letter-spacing:0.1em">{{ resumeNote }}</span></a>
+        </div>
+      </div>
+      <div data-reveal="200" style="position:relative;aspect-ratio:4/5;max-height:640px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+        <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(80% 60% at 70% 100%,oklch(0.6 0.1 50 / .28),transparent 70%)"></div>
+        {{ portraitEl }}
+        <sc-if value="{{ noPortrait }}"><span style="position:absolute;left:20px;bottom:18px;font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">portrait photo · 4:5</span></sc-if>
+      </div>
+    </div>
+    <dl data-reveal="100" style="margin:72px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px 32px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">
+      <sc-for list="{{ site.facts }}" as="f" hint-placeholder-count="4">
+        <div><dt style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ f.label }}</dt><dd style="margin:8px 0 0;font-size:16.5px;line-height:1.45;color:#ffffff">{{ f.value }}</dd></div>
+      </sc-for>
+    </dl>
+  </section>
+
+  <section aria-labelledby="ov-about" style="max-width:1320px;margin:0 auto;padding:64px clamp(20px,4vw,48px)">
+    <div style="display:flex;align-items:baseline;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">02</span><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">About</span></div>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 64px">
+      <h2 id="ov-about" data-reveal="0" style="margin:0;font-size:clamp(34px,4vw,56px);line-height:1.04;letter-spacing:-0.03em;font-weight:400;text-wrap:balance">{{ about.headline }}</h2>
+      <div data-reveal="100">
+        <p style="margin:0;font-size:18px;line-height:1.65;color:#dadbdf;text-wrap:pretty">{{ aboutBio0 }}</p>
+        <a href="#/about" style="display:inline-block;margin-top:24px;font-size:15px;color:oklch(0.85 0.128 55);text-decoration:none">More about me →</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ov-work" style="max-width:1320px;margin:0 auto;padding:64px clamp(20px,4vw,48px)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">
+      <div style="display:flex;align-items:baseline;gap:20px"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">03</span><h2 id="ov-work" style="margin:0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-0.035em;font-weight:400">Selected work</h2></div>
+      <a href="#/work" style="font-size:14.5px;color:#a7aab0;text-decoration:none;white-space:nowrap">All work →</a>
+    </div>
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:56px 28px">
+      <sc-for list="{{ featured }}" as="p" hint-placeholder-count="4">
+        <div data-reveal="{{ p.delay }}">
+          <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:20px;color:inherit;text-decoration:none;transition:transform .5s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px)">
+            <div style="position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(80% 70% at 75% 110%,{{ p.glow }},transparent 70%)"></div>
+              {{ p.coverEl }}
+              <sc-if value="{{ p.coverPh }}"><span style="position:absolute;left:18px;bottom:16px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.coverLabel }}</span></sc-if>
+              <span style="position:absolute;left:18px;top:16px;font-family:'Geist Mono',monospace;font-size:12px;color:#dadbdf;text-transform:uppercase;letter-spacing:0.1em">{{ p.num }}</span>
+            </div>
+            <div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                <span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.kind }}</span>
+                <sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="font-family:'Geist Mono',monospace;font-size:11.5px;padding:3px 9px;border-radius:999px;color:{{ ch.color }};background:{{ ch.bg }};text-transform:uppercase;letter-spacing:0.1em">{{ ch.label }}</span></sc-for>
+              </div>
+              <h3 style="margin:12px 0 0;font-size:clamp(24px,2.2vw,30px);letter-spacing:-0.025em;font-weight:400">{{ p.title }}</h3>
+              <p style="margin:8px 0 0;max-width:560px;font-size:16px;line-height:1.55;color:{{ p.shortColor }};font-family:{{ p.shortFont }}">{{ p.shortT }}</p>
+            </div>
+          </a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-labelledby="ov-exp" style="max-width:1320px;margin:0 auto;padding:64px clamp(20px,4vw,48px)">
+    <div style="display:flex;align-items:baseline;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">04</span><h2 id="ov-exp" style="margin:0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-0.035em;font-weight:400">Professional experience</h2></div>
+    <div style="margin-top:36px">
+      <sc-for list="{{ experience }}" as="p" hint-placeholder-count="3">
+        <a href="{{ p.href }}" data-reveal="{{ p.delay }}" style="display:grid;grid-template-columns:{{ expCols }};gap:8px 24px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(255,255,255,0.07);color:inherit;text-decoration:none" style-hover="background:rgba(255,255,255,0.02)">
+          <span style="font-size:22px;letter-spacing:-0.02em;font-weight:400">{{ p.title }}</span>
+          <span style="font-size:15.5px;color:{{ p.role.color }};font-family:{{ p.role.font }}">{{ p.role.t }}</span>
+          <span style="font-size:15.5px;color:{{ p.dates.color }};font-family:{{ p.dates.font }}">{{ p.dates.t }}</span>
+          <span aria-hidden="true" style="color:#7d8187;text-align:right">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-label="Engineering, research and entrepreneurship" style="max-width:1320px;margin:0 auto;padding:64px clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:64px 48px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">05</span><h2 style="margin:0;font-size:clamp(26px,2.6vw,36px);letter-spacing:-0.03em;font-weight:400">Engineering &amp; research</h2></div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ engRes }}" as="p" hint-placeholder-count="2">
+            <a href="{{ p.href }}" data-reveal="{{ p.delay }}" style="display:flex;flex-direction:column;gap:8px;padding:24px;border-radius:8px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);color:inherit;text-decoration:none;transition:border-color .25s" style-hover="border-color:rgba(255,255,255,0.2)">
+              <span style="font-family:'Geist Mono',monospace;font-size:12px;color:{{ p.color }};text-transform:uppercase;letter-spacing:0.1em">{{ p.kind }}</span>
+              <span style="font-size:20px;font-weight:400;letter-spacing:-0.02em">{{ p.title }}</span>
+              <span style="font-size:15px;line-height:1.55;color:{{ p.shortColor }};font-family:{{ p.shortFont }}">{{ p.shortT }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:baseline;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">06</span><h2 style="margin:0;font-size:clamp(26px,2.6vw,36px);letter-spacing:-0.03em;font-weight:400">Entrepreneurship</h2></div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ ventures }}" as="p" hint-placeholder-count="3">
+            <a href="{{ p.href }}" data-reveal="{{ p.delay }}" style="display:flex;flex-direction:column;gap:8px;padding:24px;border-radius:8px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);color:inherit;text-decoration:none;transition:border-color .25s" style-hover="border-color:rgba(255,255,255,0.2)">
+              <span style="font-family:'Geist Mono',monospace;font-size:12px;color:{{ p.color }};text-transform:uppercase;letter-spacing:0.1em">{{ p.kind }}</span>
+              <span style="font-size:20px;font-weight:400;letter-spacing:-0.02em">{{ p.title }}</span>
+              <span style="font-size:15px;line-height:1.55;color:{{ p.shortColor }};font-family:{{ p.shortFont }}">{{ p.shortT }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ov-skills" style="max-width:1320px;margin:0 auto;padding:64px clamp(20px,4vw,48px)">
+    <div style="display:flex;align-items:baseline;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">07</span><h2 id="ov-skills" style="margin:0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-0.035em;font-weight:400">Skills &amp; capabilities</h2></div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:36px 28px">
+      <sc-for list="{{ skills }}" as="g" hint-placeholder-count="4">
+        <div data-reveal="{{ g.delay }}">
+          <h3 style="margin:0;font-size:17px;font-weight:400;color:#ffffff">{{ g.group }}</h3>
+          <ul style="list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3"><li style="font-size:15px;line-height:1.45;color:{{ it.color }};font-family:{{ it.font }}">{{ it.t }}</li></sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-labelledby="ov-journey" style="max-width:1320px;margin:0 auto;padding:64px clamp(20px,4vw,48px) 120px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">
+      <div style="display:flex;align-items:baseline;gap:20px"><span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">08</span><h2 id="ov-journey" style="margin:0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-0.035em;font-weight:400">Journey</h2></div>
+      <a href="#/journey" style="font-size:14.5px;color:#a7aab0;text-decoration:none;white-space:nowrap">See connections →</a>
+    </div>
+    <ol style="list-style:none;margin:40px 0 0;padding:0">
+      <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="6">
+        <li data-reveal="{{ t.delay }}" style="display:grid;grid-template-columns:{{ tlCols }};gap:6px 32px">
+          <span style="padding-top:2px;font-family:'Geist Mono',monospace;font-size:13px;color:{{ t.whenT.color }};text-transform:uppercase;letter-spacing:0.1em">{{ t.whenT.t }}</span>
+          <div style="position:relative;padding:0 0 36px 30px;border-left:1px solid rgba(255,255,255,0.1)">
+            <span aria-hidden="true" style="position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:{{ t.color }};box-shadow:0 0 0 4px #0a0a0a"></span>
+            <div style="font-size:19px;font-weight:400;letter-spacing:-0.015em;color:{{ t.titleT.color }};font-family:{{ t.titleT.font }}">{{ t.titleT.t }}</div>
+            <div style="margin-top:6px;font-size:15px;line-height:1.55;color:{{ t.textT.color }};font-family:{{ t.textT.font }}">{{ t.textT.t }}</div>
+            <sc-if value="{{ t.hasLink }}"><a href="{{ t.href }}" style="display:inline-block;margin-top:10px;font-size:14px;color:oklch(0.85 0.128 55);text-decoration:none">View →</a></sc-if>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+</sc-if>
+
+<!-- ═════════ WORK INDEX ═════════ -->
+<sc-if value="{{ rWork }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="work-h" style="max-width:1320px;margin:0 auto;padding:clamp(120px,14vw,170px) clamp(20px,4vw,48px) 120px">
+    <h1 id="work-h" data-reveal="0" style="margin:0;font-size:clamp(56px,8vw,120px);line-height:0.92;letter-spacing:-0.055em;font-weight:400">Work</h1>
+    <p data-reveal="80" style="margin:20px 0 0;max-width:560px;font-size:18px;line-height:1.55;color:#a7aab0">Personal ventures, professional experience, research and academic work. Most projects belong to more than one thread.</p>
+    <div role="group" aria-label="Filter by thread" style="margin-top:40px;display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button type="button" onClick="{{ f.onClick }}" aria-pressed="{{ f.active }}" style="min-height:42px;padding:0 18px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;color:{{ f.color }};background:{{ f.bg }};border:1px solid {{ f.border }};transition:all .25s">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:52px 28px">
+      <sc-for list="{{ workList }}" as="p" hint-placeholder-count="6">
+        <div data-reveal="{{ p.delay }}">
+          <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:18px;color:inherit;text-decoration:none;transition:transform .5s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px)">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(80% 70% at 75% 110%,{{ p.glow }},transparent 70%)"></div>
+              {{ p.coverEl }}
+              <sc-if value="{{ p.coverPh }}"><span style="position:absolute;left:16px;bottom:14px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.coverLabel }}</span></sc-if>
+              <span style="position:absolute;left:16px;top:14px;font-family:'Geist Mono',monospace;font-size:12px;color:#dadbdf;text-transform:uppercase;letter-spacing:0.1em">{{ p.num }}</span>
+            </div>
+            <div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                <span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.kind }}</span>
+                <sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="font-family:'Geist Mono',monospace;font-size:11.5px;padding:3px 9px;border-radius:999px;color:{{ ch.color }};background:{{ ch.bg }};text-transform:uppercase;letter-spacing:0.1em">{{ ch.label }}</span></sc-for>
+              </div>
+              <h2 style="margin:12px 0 0;font-size:24px;letter-spacing:-0.025em;font-weight:400">{{ p.title }}</h2>
+              <p style="margin:8px 0 0;font-size:15.5px;line-height:1.55;color:{{ p.shortColor }};font-family:{{ p.shortFont }}">{{ p.shortT }}</p>
+            </div>
+          </a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ═════════ THEME ═════════ -->
+<sc-if value="{{ rTheme }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="theme-h" style="position:relative;padding:clamp(130px,15vw,190px) 0 80px;background:radial-gradient(50% 60% at 20% 20%,{{ theme.glow }},transparent 70%)">
+    <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <a href="#/" style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">← All threads</a>
+      <h1 id="theme-h" data-reveal="0" style="margin:24px 0 0;font-size:clamp(72px,12vw,200px);line-height:0.86;letter-spacing:-0.035em;font-weight:400;color:{{ theme.color }}">{{ theme.label }}</h1>
+      <p data-reveal="100" style="margin:28px 0 0;max-width:620px;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:#dadbdf">{{ theme.blurb }}</p>
+    </div>
+  </section>
+  <section aria-label="Projects in this thread" style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px) 100px">
+    <sc-for list="{{ theme.projects }}" as="p" hint-placeholder-count="3">
+      <a href="{{ p.href }}" data-reveal="{{ p.delay }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;align-items:center;padding:36px 0;border-top:1px solid rgba(255,255,255,0.08);color:inherit;text-decoration:none">
+        <div style="position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+          <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(80% 70% at 75% 110%,{{ p.glow }},transparent 70%)"></div>
+          {{ p.coverEl }}
+          <sc-if value="{{ p.coverPh }}"><span style="position:absolute;left:16px;bottom:14px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.coverLabel }}</span></sc-if>
+        </div>
+        <div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+            <span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.num }} — {{ p.kind }}</span>
+            <sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="font-family:'Geist Mono',monospace;font-size:11.5px;padding:3px 9px;border-radius:999px;color:{{ ch.color }};background:{{ ch.bg }};text-transform:uppercase;letter-spacing:0.1em">{{ ch.label }}</span></sc-for>
+          </div>
+          <h2 style="margin:14px 0 0;font-size:clamp(28px,3vw,42px);letter-spacing:-0.035em;font-weight:400">{{ p.title }}</h2>
+          <p style="margin:10px 0 0;max-width:520px;font-size:16.5px;line-height:1.55;color:{{ p.shortColor }};font-family:{{ p.shortFont }}">{{ p.shortT }}</p>
+          <span style="display:inline-block;margin-top:18px;font-size:14.5px;color:{{ theme.color }}">Read case study →</span>
+        </div>
+      </a>
+    </sc-for>
+    <div style="margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+      <span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;margin-right:8px;text-transform:uppercase;letter-spacing:0.1em">Other threads</span>
+      <sc-for list="{{ theme.others }}" as="o" hint-placeholder-count="3">
+        <a href="{{ o.href }}" style="padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:{{ o.color }};text-decoration:none;font-size:15px">{{ o.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ═════════ PROJECT CASE STUDY ═════════ -->
+<sc-if value="{{ rProject }}" hint-placeholder-val="{{ false }}">
+  <article aria-labelledby="proj-h">
+    <header style="position:relative;padding:clamp(116px,12vw,150px) 0 0;background:radial-gradient(50% 50% at 80% 0%,{{ p.glow }},transparent 70%)">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+        <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-family:'Geist Mono',monospace;font-size:12.5px;text-transform:uppercase;letter-spacing:0.1em">
+          <a href="#/work" onClick="{{ backClick }}" style="color:#dadbdf;text-decoration:none">← Back</a>
+          <span aria-hidden="true" style="color:#55585e">/</span>
+          <a href="#/work" style="color:#7d8187;text-decoration:none">Work</a>
+          <span aria-hidden="true" style="color:#55585e">/</span>
+          <span aria-current="page" style="color:#7d8187">{{ p.title }}</span>
+        </nav>
+        <div data-reveal="0" style="margin-top:44px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.num }} — {{ p.kind }}</span>
+          <sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><a href="{{ ch.href }}" style="font-family:'Geist Mono',monospace;font-size:11.5px;padding:4px 10px;border-radius:999px;color:{{ ch.color }};background:{{ ch.bg }};text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">{{ ch.label }}</a></sc-for>
+        </div>
+        <h1 id="proj-h" data-reveal="80" style="margin:20px 0 0;max-width:1100px;font-size:clamp(44px,6.6vw,108px);line-height:0.94;letter-spacing:-0.035em;font-weight:400;text-wrap:balance">{{ p.title }}</h1>
+        <p data-reveal="160" style="margin:28px 0 0;max-width:780px;font-size:clamp(18px,1.6vw,23px);line-height:1.5;color:{{ p.introT.color }};font-family:{{ p.introT.font }};text-wrap:pretty">{{ p.introT.t }}</p>
+        <dl data-reveal="220" style="margin:48px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:24px 32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08)">
+          <sc-for list="{{ p.metaItems }}" as="m" hint-placeholder-count="3">
+            <div><dt style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ m.label }}</dt><dd style="margin:8px 0 0;font-size:15.5px;line-height:1.45;color:{{ m.color }};font-family:{{ m.font }}">{{ m.t }}</dd></div>
+          </sc-for>
+        </dl>
+      </div>
+      <div data-reveal="120" style="max-width:1320px;margin:56px auto 0;padding:0 clamp(20px,4vw,48px)">
+        <div style="position:relative;aspect-ratio:{{ coverAR }};border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 12px),linear-gradient(160deg,#191919,#0a0a0a)">
+          <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(70% 70% at 70% 110%,{{ p.glow }},transparent 70%)"></div>
+          {{ p.coverEl }}
+          <sc-if value="{{ p.coverPh }}"><span style="position:absolute;left:22px;bottom:18px;font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ p.coverLabel }}</span></sc-if>
+        </div>
+      </div>
+    </header>
+
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(20px,4vw,48px) 0">
+      <sc-if value="{{ p.hasNotice }}">
+        <p style="margin:0 0 40px;max-width:900px;display:flex;gap:14px;align-items:baseline;padding:18px 22px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);font-size:15px;line-height:1.5;color:#dadbdf"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:oklch(0.82 0.144 55);white-space:nowrap;text-transform:uppercase;letter-spacing:0.1em">Provenance</span>{{ p.notice }}</p>
+      </sc-if>
+      <sc-for list="{{ p.sectionList }}" as="s" hint-placeholder-count="4">
+        <section data-reveal="0" style="display:grid;grid-template-columns:{{ secCols }};gap:16px 48px;padding:40px 0;border-top:1px solid rgba(255,255,255,0.08)">
+          <h2 style="margin:0;font-size:21px;font-weight:400;letter-spacing:-0.015em;color:#ffffff">{{ s.label }}</h2>
+          <sc-if value="{{ s.notPh }}"><p style="margin:0;max-width:760px;font-size:clamp(18px,1.4vw,21px);line-height:1.6;color:#dadbdf;text-wrap:pretty">{{ s.t }}</p></sc-if>
+          <sc-if value="{{ s.ph }}"><p style="margin:0;max-width:760px;padding:16px 18px;border-radius:8px;border:1px dashed oklch(0.6 0.096 55 / .55);font-family:'Geist Mono',monospace;font-size:13.5px;line-height:1.6;color:oklch(0.82 0.112 55);text-transform:uppercase;letter-spacing:0.1em">{{ s.t }}</p></sc-if>
+        </section>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ p.hasBA }}">
+      <section aria-labelledby="ba-h" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px) 0">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:22px"><h2 id="ba-h" style="margin:0;font-size:21px;font-weight:400">Before &amp; after</h2><span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Drag to compare</span></div>
+        <div style="position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);user-select:none">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 12px),linear-gradient(160deg,#191919,#0a0a0a)">
+            {{ p.baAfterSrcEl }}
+            <span style="position:absolute;right:20px;bottom:18px;font-family:'Geist Mono',monospace;font-size:12px;color:#a7aab0;text-transform:uppercase;letter-spacing:0.1em">{{ p.baAfter }}</span>
+          </div>
+          <div style="position:absolute;inset:0;clip-path:{{ baClip }};background:repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0 1px,transparent 1px 12px),linear-gradient(160deg,#191919,#0a0a0a)">
+            {{ p.baBeforeSrcEl }}
+            <span style="position:absolute;left:20px;bottom:18px;font-family:'Geist Mono',monospace;font-size:12px;color:#a7aab0;text-transform:uppercase;letter-spacing:0.1em">{{ p.baBefore }}</span>
+          </div>
+          <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:{{ baLeft }};width:1px;background:rgba(255,255,255,0.7);pointer-events:none">
+            <span style="position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%);border-radius:50%;background:rgba(13,15,20,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.4);display:grid;place-items:center;font-size:14px;color:#fff">↔</span>
+          </div>
+          <input type="range" min="0" max="100" value="{{ ba }}" onChange="{{ onBa }}" aria-label="Before and after comparison" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize">
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ p.hasCollection }}">
+      <section aria-labelledby="col-h" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px) 0">
+        <h2 id="col-h" style="margin:0 0 22px;font-size:21px;font-weight:400">Selected projects</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px">
+          <sc-for list="{{ p.collectionList }}" as="x" hint-placeholder-count="3">
+            <div data-reveal="{{ x.delay }}" style="display:flex;flex-direction:column;gap:10px;padding:24px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02)">
+              <span style="font-family:'Geist Mono',monospace;font-size:12px;color:{{ x.kind.color }};text-transform:uppercase;letter-spacing:0.1em">{{ x.kind.t }}</span>
+              <span style="font-size:18px;font-weight:400;line-height:1.35;color:{{ x.title.color }};font-family:{{ x.title.font }}">{{ x.title.t }}</span>
+              <span style="font-size:14.5px;line-height:1.55;color:{{ x.text.color }};font-family:{{ x.text.font }}">{{ x.text.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ p.hasSite }}">
+      <section aria-label="Visit website" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px) 0">
+        <a href="{{ p.site.href }}" target="_blank" rel="noopener" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;padding:clamp(28px,4vw,48px);border-radius:12px;border:1px solid {{ p.color }};background:radial-gradient(120% 140% at 0% 0%,{{ p.glow }},transparent 60%),#111111;color:#ffffff;text-decoration:none" style-hover="background:radial-gradient(120% 140% at 0% 0%,{{ p.glow }},transparent 75%),#151515">
+          <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'Geist Mono',monospace;font-size:12.5px;color:{{ p.color }};text-transform:uppercase;letter-spacing:0.1em">{{ p.site.kicker }}</span>
+            <span style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;text-wrap:balance">{{ p.site.title }}</span>
+            <span style="font-size:16px;line-height:1.55;color:#a7aab0;max-width:560px;text-wrap:pretty">{{ p.site.text }}</span>
+          </div>
+          <span style="flex:none;min-height:52px;display:inline-flex;align-items:center;gap:10px;padding:0 26px;border-radius:999px;background:#ffffff;color:#0a0a0a;font-size:15.5px;font-weight:500">{{ p.site.cta }} <span aria-hidden="true">↗</span></span>
+        </a>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ p.hasGallery }}">
+      <section aria-labelledby="gal-h" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px) 0">
+        <h2 id="gal-h" style="margin:0 0 22px;font-size:21px;font-weight:400">Gallery</h2>
+        <div style="display:grid;grid-template-columns:{{ p.galCols }};grid-auto-flow:dense;gap:14px">
+          <sc-for list="{{ p.galleryList }}" as="g" hint-placeholder-count="4">
+            <figure data-reveal="{{ g.delay }}" style="margin:0;grid-column:{{ g.span }};grid-row:{{ g.rspan }};position:relative;aspect-ratio:{{ g.ar }};min-height:0;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+              {{ g.srcEl }}
+              <figcaption style="position:absolute;left:16px;bottom:14px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ g.cap }}</figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ p.hasDocs }}">
+      <section aria-labelledby="docs-h" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px) 0">
+        <h2 id="docs-h" style="margin:0 0 22px;font-size:21px;font-weight:400">Documents</h2>
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.08)">
+          <sc-for list="{{ p.docList }}" as="d" hint-placeholder-count="2">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <span aria-hidden="true" style="width:44px;height:56px;border-radius:6px;border:1px solid rgba(255,255,255,0.14);display:grid;place-items:center;font-family:'Geist Mono',monospace;font-size:10.5px;color:#a7aab0;background:rgba(255,255,255,0.03);text-transform:uppercase;letter-spacing:0.1em">{{ d.type }}</span>
+              <div style="flex:1 1 260px;min-width:0">
+                <div style="font-size:17px;font-weight:400;color:{{ d.titleT.color }};font-family:{{ d.titleT.font }}">{{ d.titleT.t }}</div>
+                <div style="margin-top:4px;font-size:13.5px;color:{{ d.provT.color }};font-family:{{ d.provT.font }}">{{ d.provT.t }}</div>
+              </div>
+              <div style="display:flex;flex:none;gap:10px">
+                <button type="button" onClick="{{ d.open }}" style="min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);background:transparent;color:#ffffff;font:inherit;font-size:14px;cursor:pointer" style-hover="background:rgba(255,255,255,0.06)">Full screen</button>
+                <sc-if value="{{ d.hasHref }}"><a href="{{ d.href }}" download="" style="min-height:44px;display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;font-size:14px;text-decoration:none" style-hover="background:#dadbdf">Download</a></sc-if>
+              </div>
+              <sc-if value="{{ d.isPdf }}"><div style="flex:1 1 100%;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column">{{ d.viewerEl }}</div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ p.hasLinks }}">
+      <section aria-labelledby="links-h" style="max-width:1320px;margin:0 auto;padding:48px clamp(20px,4vw,48px) 0">
+        <h2 id="links-h" style="margin:0 0 18px;font-size:21px;font-weight:400">Links</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ p.linkList }}" as="l" hint-placeholder-count="1">
+            <a href="{{ l.href }}" target="_blank" rel="noopener" style="padding:11px 18px;border-radius:999px;border:1px dashed rgba(255,255,255,0.18);color:{{ l.labelT.color }};font-family:{{ l.labelT.font }};font-size:14px;text-decoration:none">{{ l.labelT.t }} ↗</a>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <section aria-labelledby="rel-h" style="max-width:1320px;margin:0 auto;padding:clamp(80px,10vw,130px) clamp(20px,4vw,48px) 40px">
+      <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">
+        <p style="margin:0;font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Connected work</p>
+        <h2 id="rel-h" style="margin:12px 0 0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-0.035em;font-weight:400">Where this leads</h2>
+      </div>
+      <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+        <sc-for list="{{ p.relatedList }}" as="q" hint-placeholder-count="3">
+          <a href="{{ q.href }}" data-reveal="{{ q.delay }}" style="position:relative;display:flex;flex-direction:column;gap:10px;padding:26px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:radial-gradient(90% 80% at 100% 120%,{{ q.glow }},transparent 70%),rgba(255,255,255,0.015);color:inherit;text-decoration:none;min-height:180px;transition:border-color .25s" style-hover="border-color:rgba(255,255,255,0.22)">
+            <span style="display:flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:12px;color:{{ q.color }};text-transform:uppercase;letter-spacing:0.1em"><span aria-hidden="true" style="width:18px;height:1px;background:{{ q.color }}"></span>{{ q.via }}</span>
+            <span style="font-size:22px;font-weight:400;letter-spacing:-0.02em">{{ q.title }}</span>
+            <span style="font-size:14.5px;line-height:1.5;color:{{ q.shortColor }};font-family:{{ q.shortFont }}">{{ q.shortT }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <nav aria-label="Project navigation" style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <a href="{{ prev.href }}" style="display:flex;flex-direction:column;gap:6px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.1);color:inherit;text-decoration:none"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">← Previous</span><span style="font-size:17px">{{ prev.title }}</span></a>
+        <a href="{{ next.href }}" style="display:flex;flex-direction:column;gap:6px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.1);color:inherit;text-decoration:none;text-align:right"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Next →</span><span style="font-size:17px">{{ next.title }}</span></a>
+      </nav>
+    </section>
+  </article>
+</sc-if>
+
+<!-- ═════════ JOURNEY ═════════ -->
+<sc-if value="{{ rJourney }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="jr-h" style="max-width:1320px;margin:0 auto;padding:clamp(120px,14vw,170px) clamp(20px,4vw,48px) 40px">
+    <p data-reveal="0" style="margin:0;font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Journey</p>
+    <h1 id="jr-h" data-reveal="80" style="margin:16px 0 0;font-size:clamp(52px,7.4vw,116px);line-height:0.92;letter-spacing:-0.055em;font-weight:400">The path so far.</h1>
+    <p data-reveal="160" style="margin:24px 0 0;max-width:620px;font-size:18px;line-height:1.55;color:#a7aab0">Oldest on the left, newest on the right. Hover a project to see what it led to.</p>
+  </section>
+
+  <sc-if value="{{ showGraph }}" hint-placeholder-val="{{ true }}">
+    <section aria-label="Connections map" style="max-width:1320px;margin:0 auto;padding:20px clamp(20px,4vw,48px) 60px">
+      <div role="group" aria-label="Highlight a thread" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+        <sc-for list="{{ storyBtns }}" as="b" hint-placeholder-count="3">
+          <button type="button" onClick="{{ b.onClick }}" aria-pressed="{{ b.active }}" style="min-height:42px;padding:0 18px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;color:{{ b.color }};background:{{ b.bg }};border:1px solid {{ b.border }};transition:all .25s">{{ b.label }}</button>
+        </sc-for>
+      </div>
+      <div style="position:relative;width:{{ gW }};height:{{ gH }};border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:radial-gradient(60% 60% at 40% 50%,rgba(124,58,237,0.098),transparent 70%),repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 1px,transparent 1px 60px),repeating-linear-gradient(90deg,rgba(255,255,255,0.025) 0 1px,transparent 1px 60px);overflow:hidden">
+        <sc-for list="{{ gTicks }}" as="tk" hint-placeholder-count="0">
+          <div aria-hidden="true" style="position:absolute;left:{{ tk.left }};top:0;bottom:0;width:1px;background:repeating-linear-gradient(180deg,rgba(255,255,255,0.18) 0 4px,transparent 4px 10px)"></div>
+          <span aria-hidden="true" style="position:absolute;left:{{ tk.left }};bottom:12px;transform:{{ tk.tf }};font-family:'Geist Mono',monospace;font-size:12.5px;font-weight:500;color:#dadbdf;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;padding:2px 6px;background:#0a0a0a">{{ tk.label }}</span>
+        </sc-for>
+        <sc-for list="{{ gEdges }}" as="e" hint-placeholder-count="0">
+          <div aria-hidden="true" style="position:absolute;left:{{ e.left }};top:{{ e.top }};width:{{ e.len }};height:1px;transform-origin:0 50%;transform:{{ e.tf }};background:{{ e.bg }};opacity:{{ e.op }};transition:opacity .4s"></div>
+        </sc-for>
+        <sc-for list="{{ gEdges }}" as="e" hint-placeholder-count="0">
+          <span aria-hidden="true" style="position:absolute;left:{{ e.lx }};top:{{ e.ly }};transform:translate(-50%,-50%);padding:3px 8px;border-radius:6px;background:rgba(8,9,12,0.85);font-family:'Geist Mono',monospace;font-size:11px;color:#a7aab0;white-space:nowrap;opacity:{{ e.lop }};transition:opacity .3s;pointer-events:none;text-transform:uppercase;letter-spacing:0.1em;z-index:1">{{ e.label }}</span>
+        </sc-for>
+        <sc-for list="{{ gNodes }}" as="n" hint-placeholder-count="9">
+          <a href="{{ n.href }}" onMouseEnter="{{ n.enter }}" onMouseLeave="{{ n.leave }}" onFocus="{{ n.enter }}" onBlur="{{ n.leave }}" style="position:absolute;left:{{ n.left }};top:{{ n.top }};transform:{{ n.tf }};display:flex;flex-direction:column;align-items:{{ n.ai }};gap:8px;color:inherit;text-decoration:none;opacity:{{ n.op }};transition:opacity .35s;z-index:2">
+            <span aria-hidden="true" style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid {{ n.color }};background:{{ n.dotBg }};box-shadow:{{ n.ring }};transition:all .35s"></span>
+            <span style="padding:3px 8px;border-radius:5px;background:rgba(10,10,10,0.88);font-size:15px;font-weight:400;color:#ffffff;white-space:nowrap;text-align:{{ n.align }}">{{ n.title }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showChainsJourney }}" hint-placeholder-val="{{ false }}">
+    <section aria-label="Threads" style="padding:10px 22px 40px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ storyChains }}" as="s" hint-placeholder-count="2">
+        <div style="padding:22px;border-radius:8px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07)">
+          <div style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.1em">{{ s.label }}</div>
+          <sc-for list="{{ s.nodes }}" as="n" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column">
+              <a href="{{ n.href }}" style="display:flex;align-items:center;gap:12px;min-height:44px;color:#ffffff;text-decoration:none;font-size:16px"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{ n.color }}"></span>{{ n.title }}</a>
+              <sc-if value="{{ n.notLast }}"><span style="margin-left:4px;padding:2px 0 2px 20px;border-left:1px solid rgba(255,255,255,0.15);font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ n.edge }}</span></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </section>
+  </sc-if>
+
+  <section aria-labelledby="tl-h" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px) 100px">
+    <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><h2 id="tl-h" style="margin:0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-0.035em;font-weight:400">Timeline</h2></div>
+    <ol style="list-style:none;margin:40px 0 0;padding:0">
+      <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="6">
+        <li data-reveal="{{ t.delay }}" style="display:grid;grid-template-columns:{{ tlCols }};gap:6px 32px">
+          <span style="padding-top:2px;font-family:'Geist Mono',monospace;font-size:13px;color:{{ t.whenT.color }};text-transform:uppercase;letter-spacing:0.1em">{{ t.whenT.t }}</span>
+          <div style="position:relative;padding:0 0 36px 30px;border-left:1px solid rgba(255,255,255,0.1)">
+            <span aria-hidden="true" style="position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:{{ t.color }};box-shadow:0 0 0 4px #0a0a0a"></span>
+            <div style="font-size:19px;font-weight:400;letter-spacing:-0.015em;color:{{ t.titleT.color }};font-family:{{ t.titleT.font }}">{{ t.titleT.t }}</div>
+            <div style="margin-top:6px;font-size:15px;line-height:1.55;color:{{ t.textT.color }};font-family:{{ t.textT.font }}">{{ t.textT.t }}</div>
+            <sc-if value="{{ t.hasLink }}"><a href="{{ t.href }}" style="display:inline-block;margin-top:10px;font-size:14px;color:oklch(0.85 0.128 55);text-decoration:none">View →</a></sc-if>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+</sc-if>
+
+<!-- ═════════ ABOUT ═════════ -->
+<sc-if value="{{ rAbout }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="ab-h" style="max-width:1320px;margin:0 auto;padding:clamp(120px,14vw,170px) clamp(20px,4vw,48px) 60px">
+    <p data-reveal="0" style="margin:0;font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">About</p>
+    <h1 id="ab-h" data-reveal="80" style="margin:16px 0 0;max-width:1100px;font-size:clamp(46px,6.4vw,100px);line-height:0.96;letter-spacing:-0.035em;font-weight:400;text-wrap:balance">{{ about.headline }}</h1>
+    <div style="margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px 72px;align-items:start">
+      <div data-reveal="100" style="position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+        <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(80% 60% at 30% 100%,oklch(0.6 0.1 50 / .28),transparent 70%)"></div>
+        {{ portraitEl }}
+        <sc-if value="{{ noPortrait }}"><span style="position:absolute;left:20px;bottom:18px;font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">portrait photo · 4:5</span></sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <sc-for list="{{ about.bio }}" as="para" hint-placeholder-count="2">
+          <p data-reveal="0" style="margin:0;font-size:clamp(18px,1.5vw,21px);line-height:1.65;color:#dadbdf;text-wrap:pretty">{{ para }}</p>
+        </sc-for>
+        <dl style="margin:20px 0 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:18px">
+          <sc-for list="{{ education }}" as="ed" hint-placeholder-count="1">
+            <div><dt style="font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Education</dt><dd style="margin:8px 0 0;font-size:17px;color:#ffffff">{{ ed.program }}, {{ ed.school }} <span style="font-family:'Geist Mono',monospace;font-size:13px;color:{{ ed.datesT.color }};text-transform:uppercase;letter-spacing:0.1em">{{ ed.datesT.t }}</span></dd></div>
+          </sc-for>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ap-h" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px)">
+    <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)"><h2 id="ap-h" style="margin:0;font-size:clamp(28px,3vw,40px);letter-spacing:-0.03em;font-weight:400">How I approach problems</h2></div>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:36px 32px">
+      <sc-for list="{{ approach }}" as="ap" hint-placeholder-count="3">
+        <div data-reveal="{{ ap.delay }}">
+          <span style="font-family:'Geist',system-ui,sans-serif;font-style:normal;font-size:44px;line-height:1;color:oklch(0.85 0.112 55)">{{ ap.num }}</span>
+          <h3 style="margin:14px 0 0;font-size:20px;font-weight:400;letter-spacing:-0.015em">{{ ap.title }}</h3>
+          <p style="margin:10px 0 0;font-size:16px;line-height:1.6;color:#a7aab0">{{ ap.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-label="Currently exploring and interests" style="max-width:1320px;margin:0 auto;padding:60px clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px 64px">
+      <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">
+        <h2 style="margin:0;font-size:24px;font-weight:400;letter-spacing:-0.02em">Currently exploring</h2>
+        <ul style="list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ nowExploring }}" as="ne" hint-placeholder-count="3"><li style="display:flex;gap:14px;align-items:baseline;font-size:17px;line-height:1.5;color:{{ ne.color }};font-family:{{ ne.font }}"><span aria-hidden="true" style="color:oklch(0.82 0.160 55)">✦</span>{{ ne.t }}</li></sc-for>
+        </ul>
+      </div>
+      <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">
+        <h2 style="margin:0;font-size:24px;font-weight:400;letter-spacing:-0.02em">Outside of work</h2>
+        <p style="margin:22px 0 0;font-size:17px;line-height:1.6;color:{{ interestsT.color }};font-family:{{ interestsT.font }}">{{ interestsT.t }}</p>
+      </div>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px">
+      <sc-for list="{{ photos }}" as="ph" hint-placeholder-count="3">
+        <figure data-reveal="{{ ph.delay }}" style="margin:0;position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 11px),linear-gradient(160deg,#191919,#0a0a0a)">
+          {{ ph.srcEl }}
+          <figcaption style="position:absolute;left:16px;bottom:14px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">{{ ph.cap }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ rMissing }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1320px;margin:0 auto;padding:180px clamp(20px,4vw,48px) 120px">
+    <h1 style="margin:0;font-size:clamp(48px,6vw,88px);letter-spacing:-0.035em;font-weight:400">Nothing here yet.</h1>
+    <a href="#/" style="display:inline-block;margin-top:24px;font-size:16px;color:oklch(0.85 0.128 55);text-decoration:none">← Back home</a>
+  </section>
+</sc-if>
+
+</main>
+
+<footer id="contact" aria-labelledby="contact-h" style="position:relative;border-top:1px solid rgba(255,255,255,0.07);background:radial-gradient(60% 80% at 50% 120%,rgba(124,58,237,0.154),transparent 70%)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(80px,11vw,150px) clamp(20px,4vw,48px) 36px">
+    <p style="margin:0;font-family:'Geist Mono',monospace;font-size:12.5px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">Contact</p>
+    <h2 id="contact-h" style="margin:16px 0 0;font-size:clamp(56px,9vw,148px);line-height:0.9;letter-spacing:-0.035em;font-weight:400">Say <em style="font-style:normal;font-family:'Geist',system-ui,sans-serif;font-weight:400;letter-spacing:-0.02em;color:oklch(0.88 0.096 55)">hello.</em></h2>
+    <p style="margin:24px 0 0;max-width:520px;font-size:18px;line-height:1.55;color:#a7aab0">Open to AI consulting, AI solutions, and footwear product development roles. I'd love to hear from you.</p>
+    <a href="{{ emailHref }}" style="display:inline-block;margin-top:36px;font-size:clamp(22px,2.6vw,36px);letter-spacing:-0.02em;color:{{ emailT.color }};font-family:{{ emailT.font }};text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:6px">{{ emailT.t }}</a>
+    <div style="margin-top:16px"><a href="tel:+12036384815" style="font-size:clamp(18px,1.8vw,24px);letter-spacing:-0.01em;color:#a7aab0;text-decoration:none" style-hover="color:#ffffff">{{ site.phone }}</a></div>
+    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ contactLinks }}" as="l" hint-placeholder-count="3">
+        <a href="{{ l.href }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);color:#ffffff;text-decoration:none;font-size:15px" style-hover="background:rgba(255,255,255,0.05)">{{ l.label }}<span style="font-family:'Geist Mono',monospace;font-size:11.5px;color:{{ l.noteColor }};text-transform:uppercase;letter-spacing:0.1em">{{ l.note }}</span></a>
+      </sc-for>
+    </div>
+    <div style="margin-top:clamp(64px,9vw,120px);padding-top:22px;border-top:1px solid rgba(255,255,255,0.07);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:'Geist Mono',monospace;font-size:12px;color:#7d8187;text-transform:uppercase;letter-spacing:0.1em">
+      <span>© 2026 Aidan Copeland</span>
+      <span>Mechanical Engineering · University of Florida</span>
+      <a href="#main" onClick="{{ toTop }}" style="color:#a7aab0;text-decoration:none">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ txOn }}" hint-placeholder-val="{{ false }}">
+  <div aria-hidden="true" style="position:fixed;z-index:80;left:{{ txL }};top:{{ txT }};width:{{ txW }};height:{{ txH }};border-radius:{{ txR }};opacity:{{ txOp }};overflow:hidden;background:radial-gradient(60% 60% at 50% 60%,{{ txGlow }},transparent 70%),repeating-linear-gradient(135deg,rgba(255,255,255,0.03) 0 1px,transparent 1px 12px),#0a0a0a;transition:left .55s cubic-bezier(.7,0,.2,1),top .55s cubic-bezier(.7,0,.2,1),width .55s cubic-bezier(.7,0,.2,1),height .55s cubic-bezier(.7,0,.2,1),border-radius .55s,opacity .45s ease;display:grid;place-items:center">
+    <span style="font-size:clamp(40px,6vw,96px);letter-spacing:-0.035em;font-weight:400;color:#ffffff;opacity:{{ txTitleOp }};transition:opacity .35s .15s;text-align:center;padding:0 24px">{{ txTitle }}</span>
+  </div>
+</sc-if>
+
+<sc-if value="{{ docOn }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="{{ doc.title }}" onClick="{{ closeDoc }}" style="position:fixed;inset:0;z-index:90;background:rgba(4,5,8,0.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;place-items:center;padding:clamp(12px,3vw,40px)">
+    <div onClick="{{ stop }}" style="width:100%;max-width:1040px;height:min(84vh,900px);display:flex;flex-direction:column;border-radius:8px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(255,255,255,0.1);box-shadow:0 40px 120px -30px rgba(0,0,0,0.9)">
+      <div style="display:flex;align-items:center;gap:16px;padding:14px 14px 14px 22px;border-bottom:1px solid rgba(255,255,255,0.08)">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:16px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:{{ doc.titleT.color }};font-family:{{ doc.titleT.font }}">{{ doc.titleT.t }}</div>
+          <div style="margin-top:3px;font-size:12.5px;color:{{ doc.provT.color }};font-family:{{ doc.provT.font }}">{{ doc.provT.t }}</div>
+        </div>
+        <sc-if value="{{ doc.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ doc.href }}" download="" style="min-height:40px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;background:#ffffff;color:#0a0a0a;text-decoration:none;font-size:14px">Download</a></sc-if>
+        <button type="button" onClick="{{ closeDoc }}" aria-label="Close document" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);background:transparent;color:#ffffff;font-size:16px;cursor:pointer">✕</button>
+      </div>
+      {{ doc.frameEl }}
+      <sc-if value="{{ doc.noHref }}">
+        <div style="flex:1;display:grid;place-items:center;padding:24px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.03) 0 1px,transparent 1px 12px),#0a0a0a">
+          <p style="margin:0;max-width:420px;text-align:center;font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;color:oklch(0.82 0.112 55);text-transform:uppercase;letter-spacing:0.1em">PDF not added yet. Put the file in /docs and set its <span style="color:#ffffff">href</span> in content.js.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static pdfCache = {};
+  static pdfDocs = {};
+  static loadPdf(src) {
+    const D = Component.pdfDocs;
+    return D[src] || (D[src] = (async () => {
+      const pdfjs = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.min.mjs');
+      pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs';
+      return pdfjs.getDocument({ url: src, isEvalSupported: false }).promise;
+    })().catch(e => { delete D[src]; throw e; }));
+  }
+  static PdfPage({ pdf, n, width }) {
+    const ref = React.useRef(null);
+    const [ratio, setRatio] = React.useState(1.294);
+    const [done, setDone] = React.useState(false);
+    React.useEffect(() => {
+      let alive = true, task = null, io = null;
+      pdf.getPage(n).then(page => {
+        if (!alive) return;
+        const v1 = page.getViewport({ scale: 1 }); setRatio(v1.height / v1.width);
+        io = new IntersectionObserver(es => {
+          if (!es.some(e => e.isIntersecting) || task) return;
+          const cv = ref.current; if (!cv) return;
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const v = page.getViewport({ scale: (cv.clientWidth * dpr) / v1.width });
+          cv.width = Math.round(v.width); cv.height = Math.round(v.height);
+          task = page.render({ canvasContext: cv.getContext('2d'), viewport: v });
+          task.promise.then(() => alive && setDone(true)).catch(() => {});
+        }, { rootMargin: '600px 0px' });
+        ref.current && io.observe(ref.current);
+      });
+      return () => { alive = false; io && io.disconnect(); task && task.cancel && task.cancel(); };
+    }, [pdf, n]);
+    return React.createElement('div', { style: { position: 'relative', width: '100%', aspectRatio: String(1 / ratio), background: '#fff', borderRadius: 4, overflow: 'hidden', boxShadow: '0 2px 20px rgba(0,0,0,0.4)' } },
+      React.createElement('canvas', { ref, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' } }),
+      done ? null : React.createElement('div', { style: { position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: '#7d8187', fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase' } }, 'Page ' + n));
+  }
+  static PdfViewer({ src, title, height }) {
+    const [pdf, setPdf] = React.useState(null);
+    const [err, setErr] = React.useState(false);
+    React.useEffect(() => { let a = true; Component.loadPdf(src).then(p => a && setPdf(p)).catch(e => { console.warn('PDF load failed', e && e.message); a && setErr(true); }); return () => { a = false; }; }, [src]);
+    const msg = t => React.createElement('div', { style: { height: '100%', display: 'grid', placeItems: 'center', color: '#a7aab0', fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase' } }, t);
+    return React.createElement('div', { role: 'document', 'aria-label': title || 'Document', tabIndex: 0, style: { flex: height ? 'none' : 1, height: height || 'auto', minHeight: 0, overflowY: 'auto', background: '#191919', overscrollBehavior: 'contain' } },
+      err ? msg('Preview unavailable — use Download') : !pdf ? msg('Loading document…') :
+      React.createElement('div', { style: { maxWidth: 860, margin: '0 auto', padding: 'clamp(12px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 20 } },
+        Array.from({ length: pdf.numPages }, (_, i) => React.createElement(Component.PdfPage, { key: i, pdf, n: i + 1 }))));
+  }
+  static PdfThumb({ src, alt, style }) {
+    const cache = Component.pdfCache;
+    const [url, setUrl] = React.useState(typeof cache[src] === 'string' ? cache[src] : null);
+    const [failed, setFailed] = React.useState(false);
+    React.useEffect(() => {
+      if (url) return;
+      let alive = true;
+      const job = cache[src] instanceof Promise ? cache[src] : (cache[src] = (async () => {
+        const pdfjs = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.min.mjs');
+        pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs';
+        const pdf = await pdfjs.getDocument({ url: src, isEvalSupported: false }).promise;
+        const page = await pdf.getPage(1);
+        const v = page.getViewport({ scale: 1.6 });
+        const cv = document.createElement('canvas'); cv.width = Math.round(v.width); cv.height = Math.round(v.height);
+        const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
+        await page.render({ canvasContext: ctx, viewport: v }).promise;
+        const out = cv.toDataURL('image/jpeg', 0.88); cache[src] = out; return out;
+      })());
+      job.then(u => alive && setUrl(u)).catch(e => { console.warn('PDF preview failed', src, e && e.message); delete cache[src]; alive && setFailed(true); });
+      return () => { alive = false; };
+    }, [src]);
+    if (url) return React.createElement('img', { src: url, alt: alt || '', style: { ...style, objectFit: /authentic-intelligence/.test(src) ? 'cover' : 'contain', background: /authentic-intelligence/.test(src) ? '#111' : '#fff' } });
+    return React.createElement('div', { style: { ...style, display: 'grid', placeItems: 'center', background: '#111', color: '#7d8187', fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase' } }, failed ? 'Open document' : 'Loading preview…');
+  }
+  state = { c: null, route: this.parse(), mode: this.loadMode(), fading: false, vw: window.innerWidth, vh: window.innerHeight, hover: null, filter: 'all', story: null, gHover: null, menu: false, doc: null, ba: 50, tx: null };
+
+  loadMode() { try { return localStorage.getItem('ac-portfolio-mode') === 'overview' ? 'overview' : 'explore'; } catch (e) { return 'explore'; } }
+  parse() { const parts = (location.hash || '').replace(/^#\/?/, '').split('/').filter(Boolean); return { name: parts[0] || 'home', id: parts[1] || null }; }
+
+  componentDidMount() {
+    this.rm = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.scrollMap = {}; this.navCount = 0; this.fresh = false; this.mx = this.my = this.sx = this.sy = 0;
+    import(new URL('content.js', location.href).href).then(m => this.setState({ c: m.default })).catch(e => console.error('content.js failed to load: ' + (e && e.message ? e.message : String(e))));
+    this.onHash = () => {
+      const key = location.hash || '#/';
+      if (key === '#main' || key === '#contact' || key === '#threads') return;
+      this.navCount++;
+      const y = this.fresh ? 0 : (this.scrollMap[key] || 0); this.fresh = false;
+      this.setState({ route: this.parse(), menu: false, hover: null, gHover: null, doc: null, story: null }, () => requestAnimationFrame(() => window.scrollTo(0, y)));
+    };
+    this.onScroll = () => { this.scrollMap[location.hash || '#/'] = window.scrollY; };
+    this.onClick = e => { const a = e.target.closest && e.target.closest('a[href^="#/"]'); if (a) this.fresh = true; };
+    this.onResize = () => this.setState({ vw: window.innerWidth, vh: window.innerHeight });
+    this.onMove = e => { this.mx = e.clientX / innerWidth - 0.5; this.my = e.clientY / innerHeight - 0.5; };
+    this.onKey = e => { if (e.key === 'Escape') { if (this.state.doc) this.setState({ doc: null }); else if (this.state.menu) this.setState({ menu: false }); } };
+    addEventListener('hashchange', this.onHash); addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('click', this.onClick, true); addEventListener('resize', this.onResize);
+    addEventListener('mousemove', this.onMove, { passive: true }); addEventListener('keydown', this.onKey);
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (!this.rm) {
+      const loop = t => {
+        this.raf = requestAnimationFrame(loop);
+        this.sx += (this.mx - this.sx) * 0.05; this.sy += (this.my - this.sy) * 0.05;
+        const s = t / 1000;
+        document.querySelectorAll('[data-float]').forEach(el => {
+          const d = +el.dataset.depth || 1, i = +el.dataset.i || 0;
+          const x = -this.sx * 24 * d + Math.cos(s * 0.4 + i) * 3 * d;
+          const y = -this.sy * 18 * d + Math.sin(s * 0.6 + i * 1.3) * 7 * d;
+          el.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0)`;
+        });
+      };
+      this.raf = requestAnimationFrame(loop);
+    }
+    this.io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.style.opacity = '1'; en.target.style.transform = 'none'; this.io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -6% 0px' }) : null;
+    this.onResize(); requestAnimationFrame(this.onResize);
+    if ('ResizeObserver' in window) { this.ro = new ResizeObserver(() => { if (window.innerWidth !== this.state.vw || window.innerHeight !== this.state.vh) this.onResize(); }); this.ro.observe(document.documentElement); }
+    this.reveal(); this.setTitle();
+  }
+
+  componentWillUnmount() {
+    removeEventListener('hashchange', this.onHash); removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('click', this.onClick, true); removeEventListener('resize', this.onResize);
+    removeEventListener('mousemove', this.onMove); removeEventListener('keydown', this.onKey);
+    cancelAnimationFrame(this.raf); this.io && this.io.disconnect(); this.ro && this.ro.disconnect();
+  }
+
+  componentDidUpdate() {
+    const s = this.state, key = [s.route, s.mode, s.c, s.filter, s.fading, s.vw < 1100];
+    if (!this._prev || key.some((v, i) => v !== this._prev[i])) { this._prev = key; this.reveal(); this.setTitle(); }
+  }
+
+  reveal() {
+    setTimeout(() => {
+      document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+        el.setAttribute('data-rv', '1');
+        if (this.rm || !this.io) return;
+        const d = +el.getAttribute('data-reveal') || 0;
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        el.style.opacity = '0'; el.style.transform = 'translateY(22px)';
+        el.style.transition = `opacity .9s cubic-bezier(.2,.7,.2,1) ${d}ms, transform .9s cubic-bezier(.2,.7,.2,1) ${d}ms`;
+        if (inView) { requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; })); }
+        else this.io.observe(el);
+        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, 2500 + d);
+      });
+    }, 30);
+  }
+
+  setTitle() {
+    const { c, route: r } = this.state;
+    const base = 'Aidan Copeland';
+    let t = base;
+    if (!c) { document.title = t; return; }
+    if (r.name === 'work' && r.id) { const p = c.projects.find(x => x.slug === r.id); if (p) t = p.title + ' — ' + base; }
+    else if (r.name === 'work') t = 'Work — ' + base;
+    else if (r.name === 'theme') { const th = c.themes.find(x => x.id === r.id); if (th) t = th.label + ' — ' + base; }
+    else if (r.name === 'journey') t = 'Journey — ' + base;
+    else if (r.name === 'about') t = 'About — ' + base;
+    document.title = t;
+  }
+
+  setMode(m) {
+    if (m === this.state.mode) return;
+    try { localStorage.setItem('ac-portfolio-mode', m); } catch (e) {}
+    const home = this.state.route.name === 'home';
+    if (this.rm) { this.setState({ mode: m }); return; }
+    this.setState({ fading: true });
+    setTimeout(() => { this.setState({ mode: m, fading: false, hover: null }); if (home) window.scrollTo(0, 0); }, 260);
+  }
+
+  scrollToId(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 10, behavior: this.rm ? 'auto' : 'smooth' });
+  }
+
+  tilt = e => {
+    if (this.rm) return;
+    const el = e.currentTarget.querySelector('[data-tilt]'); if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(800px) rotateY(${(px * 16).toFixed(2)}deg) rotateX(${(-py * 16).toFixed(2)}deg)`;
+  };
+  untilt(e) { const el = e && e.currentTarget && e.currentTarget.querySelector('[data-tilt]'); if (el) el.style.transform = ''; }
+
+  openArt(e, a) {
+    e.preventDefault();
+    if (this.rm || this.state.vw < 1100 || this.state.tx) { this.fresh = true; location.hash = a.href; return; }
+    const el = e.currentTarget.querySelector('[data-tilt]'); const r = el.getBoundingClientRect();
+    this.setState({ tx: { l: r.left, t: r.top, w: r.width, h: r.height, rad: a.radius, phase: 0, title: a.title, hue: a.hue } });
+    requestAnimationFrame(() => requestAnimationFrame(() => this.setState(s => ({ tx: s.tx && { ...s.tx, phase: 1 } }))));
+    setTimeout(() => { this.fresh = true; location.hash = a.href; }, 600);
+    setTimeout(() => this.setState(s => ({ tx: s.tx && { ...s.tx, phase: 2 } })), 720);
+    setTimeout(() => this.setState({ tx: null }), 1250);
+  }
+
+  renderVals() {
+    const S = this.state, r = S.route, vw = S.vw, mobile = vw < 760, compact = vw < 1100;
+    const c = S.c || { site: { links: [], facts: [], headline: ['', ''] }, about: { bio: [], approach: [], education: [], nowExploring: [], photos: [] }, themes: [], projects: [], artifacts: [], connections: [], stories: [], graph: {}, timeline: [], skills: [] };
+    const explore = S.mode === 'explore';
+    const isPh = v => typeof v === 'string' && /^\[[\s\S]*\]$/.test(v.trim());
+    const PH = 'oklch(0.80 0.112 55)';
+    const txt = v => ({ t: v || '', ph: isPh(v), color: isPh(v) ? PH : '#dadbdf', font: isPh(v) ? "'Geist Mono', monospace" : 'inherit' });
+    const tc = (h, a) => h == null ? `oklch(0.86 0.02 250${a != null ? ' / ' + a : ''})` : `oklch(0.80 0.13 ${h}${a != null ? ' / ' + a : ''})`;
+    const dl = i => String((i % 4) * 80);
+    const IMG = { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' };
+    const img = (src, alt, lazy) => src && /\.pdf$/i.test(src) ? React.createElement(Component.PdfThumb, { src, alt, style: IMG }) : src ? React.createElement('img', { src, alt: alt || '', loading: lazy ? 'lazy' : undefined, style: IMG }) : null;
+
+    const T = {}; c.themes.forEach((t, i) => { T[t.id] = { ...t, num: '0' + (i + 1), color: tc(t.hue), glow: tc(t.hue, 0.22), soft: tc(t.hue, 0.12), line: tc(t.hue, 0.6), href: '#/theme/' + t.id }; });
+    const chips = ids => ids.filter(id => T[id]).map(id => ({ label: T[id].label, color: T[id].color, bg: T[id].soft, href: T[id].href }));
+
+    const P = c.projects.map((p, i) => {
+      const h = T[p.themes[0]] ? T[p.themes[0]].hue : null; const sh = txt(p.short);
+      const m = p.meta || {};
+      const tile = (src, area, sc) => React.createElement('div', { key: src, style: { gridArea: area, background: '#ffffff', borderRadius: '6px', overflow: 'hidden', position: 'relative' } }, React.createElement('img', { src, alt: '', loading: 'lazy', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: sc ? '2%' : '7%', boxSizing: 'border-box', transform: sc ? 'scale(' + sc + ')' : undefined } }));
+      const collage = p.coverCollage && p.coverCollage.length >= 3 ? React.createElement('div', { role: 'img', 'aria-label': p.title + ' — product collage', style: { position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: '1fr 1.4fr', gridTemplateRows: '1fr 1fr', gridTemplateAreas: '"a b" "a c"', gap: '6px', padding: '6px', background: '#0a0a0a' } }, tile(p.coverCollage[0], 'a'), tile(p.coverCollage[1], 'b', 1.3), tile(p.coverCollage[2], 'c', 1.25)) : null;
+      return { ...p, coverEl: collage ? collage : p.coverFit === 'contain' && p.cover && !/\.pdf$/i.test(p.cover) ? React.createElement('img', { src: p.cover, alt: p.title + ' — cover image', loading: 'lazy', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', background: p.coverBg || '#eef0f4' } }) : img(p.cover, p.title + ' — cover image', true), num: String(i + 1).padStart(2, '0'), href: '#/work/' + p.slug, chips: chips(p.themes), color: tc(h), glow: tc(h, 0.3), hasCover: !!p.cover, coverPh: !p.cover, coverAlt: p.title + ' — cover image', shortT: sh.t, shortColor: sh.ph ? PH : '#a7aab0', shortFont: sh.font, role: txt(m.Role || m.Type || m.Program), dates: txt(m.Dates), delay: dl(i) };
+    });
+    const bySlug = {}; P.forEach(p => { bySlug[p.slug] = p; });
+    const pick = slugs => slugs.map(s => bySlug[s]).filter(Boolean).map((p, i) => ({ ...p, delay: dl(i) }));
+    const edgeLabel = (a, b) => { const e = c.connections.find(e => (e.from === a && e.to === b) || (e.from === b && e.to === a)); return e ? e.label : ''; };
+
+    const go = () => this.setState({ menu: false });
+    const toContact = e => { e && e.preventDefault(); this.setState({ menu: false }); setTimeout(() => this.scrollToId('contact'), 30); };
+    const navLinks = [
+      { label: 'Work', href: '#/work', active: r.name === 'work' || r.name === 'theme' },
+      { label: 'Journey', href: '#/journey', active: r.name === 'journey' },
+      { label: 'About', href: '#/about', active: r.name === 'about' },
+      { label: 'Contact', href: '#contact', active: false, onClick: toContact },
+    ].map(l => ({ ...l, color: l.active ? '#ffffff' : '#a7aab0', bg: l.active ? 'rgba(255,255,255,0.07)' : 'transparent', current: l.active ? 'page' : undefined, onMenuClick: l.onClick || go }));
+
+    // Explore stage
+    const stageH = Math.max(700, Math.min(S.vh, 1000));
+    const sc = Math.min(1.15, Math.max(0.68, vw / 1440));
+    const hov = c.artifacts.find(a => a.id === S.hover);
+    const artifacts = c.artifacts.map((a, i) => {
+      const w = a.w * sc, h = a.h * sc, L = a.x / 100 * vw, Tp = a.y / 100 * stageH;
+      const th = T[a.theme], hue = th ? th.hue : null;
+      const active = S.hover === a.id, rel = !!(hov && hov.connects.includes(a.id)), dim = !!(hov && !active && !rel);
+      const proj = a.href.indexOf('#/work/') === 0 ? bySlug[a.href.slice(7)] : null;
+      const side = a.labelSide === 'right', right = a.align === 'right' && !side;
+      const title = proj ? proj.title : 'About Aidan';
+      return {
+        ...a, cx: L + w / 2, cy: Tp + h / 2, hue, left: a.x + '%', top: a.y + '%', w: w + 'px', h: h + 'px', z: active ? 5 : 1, op: dim ? 0.3 : 1,
+        scale: active ? 'scale(1.07)' : (rel ? 'scale(1.02)' : 'scale(1)'),
+        border: active ? tc(hue, 0.55) : 'rgba(255,255,255,0.10)',
+        shadow: active ? `0 40px 90px -30px ${tc(hue, 0.6)}, 0 0 0 1px ${tc(hue, 0.25)}` : '0 30px 60px -30px rgba(0,0,0,0.9)',
+        glow: tc(hue, active ? 0.4 : 0.14), glowMob: tc(hue, 0.3), themeLabel: a.kicker || (th ? th.label : 'About'), color: tc(hue),
+        aria: `${a.label} — ${title}. ${a.text}`,
+        lbLeft: side ? 'calc(100% + 18px)' : (right ? 'auto' : '0'), lbRight: right ? '0' : 'auto',
+        lbTop: side ? '50%' : 'calc(100% + 16px)', lbTf: side ? 'translateY(-50%)' : 'none', lbAlign: right ? 'right' : 'left',
+        imageEl: a.id === 'photo' && a.image ? React.createElement('div', { style: { position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' } },
+          React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', left: '50%', top: '46%', width: '88%', aspectRatio: '1', transform: 'translate(-50%,-50%)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(255,236,200,0.22) 0%,rgba(255,226,180,0.10) 42%,rgba(255,220,170,0) 70%)' } }),
+          React.createElement('img', { src: a.image, alt: 'Aidan Copeland', style: { position: 'relative', width: '100%', height: 'auto', display: 'block', filter: 'brightness(1.14) drop-shadow(0 0 1.5px rgba(255,244,222,0.6)) drop-shadow(0 0 12px rgba(255,232,190,0.32))', WebkitMaskImage: 'linear-gradient(to bottom,#000 78%,transparent 100%)', maskImage: 'linear-gradient(to bottom,#000 78%,transparent 100%)' } }))
+          : img(a.image, ''), descOp: active ? 1 : 0, titleColor: active ? '#ffffff' : '#dadbdf', hasImg: !!a.image, noImg: !a.image,
+        open: e => this.openArt(e, { ...a, hue, title }), enter: () => this.setState({ hover: a.id }),
+        leave: e => { this.untilt(e); this.setState({ hover: null }); }, tilt: this.tilt,
+      };
+    });
+    const artLines = [];
+    if (hov && !compact) {
+      const A = artifacts.find(x => x.id === hov.id);
+      hov.connects.forEach(id => {
+        const B = artifacts.find(x => x.id === id); if (!B) return;
+        const dx = B.cx - A.cx, dy = B.cy - A.cy;
+        artLines.push({ left: A.cx + 'px', top: A.cy + 'px', len: Math.hypot(dx, dy) + 'px', tf: `rotate(${Math.atan2(dy, dx) * 180 / Math.PI}deg)`, bg: `linear-gradient(90deg, ${tc(A.hue, 0.75)}, ${tc(B.hue, 0.25)})` });
+      });
+    }
+    const threads = c.themes.map((t, i) => ({ ...T[t.id], color: tc(t.hue), line: tc(t.hue, 0.5), delay: dl(i), projects: P.filter(p => p.themes.includes(t.id)).map(p => ({ title: p.title })) }));
+    const storyChains = c.stories.map((s, si) => ({ label: s.label, delay: dl(si), nodes: s.path.map((slug, i) => ({ title: bySlug[slug] ? bySlug[slug].title : slug, color: bySlug[slug] ? bySlug[slug].color : '#fff', href: '#/work/' + slug, notLast: i < s.path.length - 1, edge: i < s.path.length - 1 ? edgeLabel(slug, s.path[i + 1]) : '' })) }));
+
+    // Project
+    const p0 = r.name === 'work' && r.id ? bySlug[r.id] : null;
+    let p = {}, prev = {}, next = {};
+    if (p0) {
+      const idx = P.indexOf(p0);
+      const ba = p0.beforeAfter;
+      const gN = (p0.gallery || []).length, gCols = vw > 1000 ? 4 : vw > 640 ? 3 : 2;
+      let gk = 0, gw = 0; search: for (const k of (gCols > 2 ? [1, 0, 2] : [0])) for (let w = 0; w < gCols; w++) if (gN && (gN + 3 * k + w) % gCols === 0) { gk = k; gw = w; break search; }
+      const gBig = new Set(gk ? [0, 7].slice(0, gk) : []), gWide = new Set([4, 9, 2, 11, 6].filter(x => x < gN && !gBig.has(x)).slice(0, gw));
+      p = {
+        ...p0, introT: { ...txt(p0.intro), color: isPh(p0.intro) ? PH : '#dadbdf' },
+        metaItems: Object.entries(p0.meta || {}).map(([k, v]) => ({ label: k, ...txt(v), color: isPh(v) ? PH : '#ffffff' })),
+        sectionList: Object.entries(p0.sections || {}).map(([k, v]) => ({ label: k, ...txt(v), notPh: !isPh(v) })),
+        hasNotice: !!p0.notice,
+        hasBA: !!ba, baBefore: ba ? ba.before : '', baAfter: ba ? ba.after : '', baBeforeSrcEl: img(ba && ba.beforeSrc, 'Before customization'), baAfterSrcEl: img(ba && ba.afterSrc, 'After customization'), baBeforeImg: !!(ba && ba.beforeSrc), baAfterImg: !!(ba && ba.afterSrc),
+        hasCollection: !!(p0.collection && p0.collection.length), collectionList: (p0.collection || []).map((x, i) => ({ title: { ...txt(x.title), color: isPh(x.title) ? PH : '#ffffff' }, kind: { ...txt(x.kind), color: isPh(x.kind) ? PH : p0.color }, text: { ...txt(x.text), color: isPh(x.text) ? PH : '#a7aab0' }, delay: dl(i) })),
+        hasSite: !!p0.site, site: p0.site || {}, galCols: 'repeat(' + gCols + ',minmax(0,1fr))', hasGallery: !!(p0.gallery && p0.gallery.length), galleryList: (p0.gallery || []).map((g, i) => ({ ...g, cap: g.src ? '' : g.label, srcEl: p0.galleryFit === 'contain' && g.src ? React.createElement('img', { src: g.src, alt: g.label || '', loading: 'lazy', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: '8%', boxSizing: 'border-box', background: '#ffffff' } }) : img(g.src, g.label, true), hasSrc: !!g.src, span: gBig.has(i) || gWide.has(i) ? 'span 2' : 'span 1', rspan: gBig.has(i) ? 'span 2' : 'span 1', ar: gBig.has(i) ? 'auto' : gWide.has(i) ? (gCols > 2 ? 'auto' : '2/1') : '1/1', delay: dl(i) })),
+        hasDocs: !!(p0.documents && p0.documents.length), docList: (p0.documents || []).map(d => ({ ...d, isPdf: !!(d.href && /\.pdf$/i.test(d.href)), hasHref: !!d.href, viewerEl: d.href && /\.pdf$/i.test(d.href) ? React.createElement(Component.PdfViewer, { src: d.href, title: d.title, height: 'min(78vh,820px)' }) : null, titleT: { ...txt(d.title), color: isPh(d.title) ? PH : '#ffffff' }, provT: { ...txt(d.provenance), color: isPh(d.provenance) ? PH : '#a7aab0' }, open: () => this.setState({ doc: d }) })),
+        hasLinks: !!(p0.links && p0.links.length), linkList: (p0.links || []).map(l => ({ href: l.href || undefined, labelT: { ...txt(l.label), color: isPh(l.label) ? PH : '#ffffff' } })),
+        relatedList: (p0.related || []).map(s => bySlug[s]).filter(Boolean).map((q, i) => ({ ...q, via: edgeLabel(p0.slug, q.slug) || 'Related', delay: dl(i) })),
+      };
+      prev = P[(idx - 1 + P.length) % P.length]; next = P[(idx + 1) % P.length];
+    }
+
+    // Journey graph
+    const pad = Math.min(48, Math.max(20, vw * 0.04));
+    const gWn = Math.min(vw - 2 * pad, 1224), gHn = Math.max(540, gWn * 0.56);
+    const story = c.stories.find(s => s.id === S.story);
+    const inStoryPair = (a, b) => !!(story && story.path.includes(a) && story.path.includes(b));
+    const anyFocus = !!(story || S.gHover);
+    const pos = slug => { const g = c.graph[slug] || [50, 50]; return [g[0] / 100 * gWn, g[1] / 100 * gHn]; };
+    const MN = c.mapNodes || {}; const node = s => bySlug[s] || (MN[s] ? { ...MN[s], color: tc(null), glow: tc(null, 0.3) } : null);
+    const gNodes = Object.keys(c.graph).filter(s => node(s)).map(slug => {
+      const q = node(slug), [x] = c.graph[slug];
+      const neighbor = S.gHover && c.connections.some(e => (e.from === S.gHover && e.to === slug) || (e.to === S.gHover && e.from === slug));
+      const lit = S.gHover === slug || (story && story.path.includes(slug)) || neighbor;
+      const right = x > 90, leftEdge = x < 12;
+      return { title: q.mapTitle || q.title, kind: q.kind, href: q.href, color: q.color, left: c.graph[slug][0] + '%', top: c.graph[slug][1] + '%', tf: right ? 'translate(calc(-100% + 11px), -11px)' : leftEdge ? 'translate(-11px, -11px)' : 'translate(-50%, -11px)', ai: right ? 'flex-end' : leftEdge ? 'flex-start' : 'center', align: right ? 'right' : leftEdge ? 'left' : 'center', op: anyFocus && !lit ? 0.32 : 1, dotBg: lit ? q.color : '#0a0a0a', ring: lit ? `0 0 0 6px ${q.glow}, 0 0 24px ${q.glow}` : 'none', enter: () => this.setState({ gHover: slug }), leave: () => this.setState({ gHover: null }) };
+    });
+    const boxes = Object.keys(c.graph).filter(sl => node(sl)).flatMap(sl => {
+      const [px, py] = pos(sl), q = node(sl), xp = c.graph[sl][0], w = (q.mapTitle || q.title).length * 8.4 + 20;
+      const x0 = xp > 90 ? px + 11 - w : xp < 12 ? px - 11 : px - w / 2;
+      return [{ x: px - 16, y: py - 16, w: 32, h: 32 }, { x: x0 - 4, y: py + 15, w: w + 8, h: 32 }];
+    });
+    const hit = (r) => boxes.some(o => r.x < o.x + o.w && r.x + r.w > o.x && r.y < o.y + o.h && r.y + r.h > o.y) || r.x < 0 || r.x + r.w > gWn || r.y < 0 || r.y + r.h > gHn - 34;
+    const gEdges = c.connections.filter(e => node(e.from) && node(e.to)).map(e => {
+      const [x1, y1] = pos(e.from), [x2, y2] = pos(e.to);
+      const lit = inStoryPair(e.from, e.to) || (S.gHover && (e.from === S.gHover || e.to === S.gHover));
+      let lx = (x1 + x2) / 2, ly = (y1 + y2) / 2, show = false;
+      if (lit && e.label) {
+        const w = e.label.length * 8.6 + 22, h = 24;
+        for (const t of [0.5, 0.42, 0.58, 0.34, 0.66, 0.27, 0.73, 0.2, 0.8]) {
+          const cx = x1 + (x2 - x1) * t, cy = y1 + (y2 - y1) * t, r = { x: cx - w / 2, y: cy - h / 2, w, h };
+          if (!hit(r)) { lx = cx; ly = cy; show = true; boxes.push({ x: r.x - 4, y: r.y - 3, w: r.w + 8, h: r.h + 6 }); break; }
+        }
+      }
+      return { left: x1 + 'px', top: y1 + 'px', len: Math.hypot(x2 - x1, y2 - y1) + 'px', tf: `rotate(${Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI}deg)`, bg: lit ? `linear-gradient(90deg, ${node(e.from).color}, ${node(e.to).color})` : 'rgba(255,255,255,0.8)', op: lit ? 0.95 : (anyFocus ? 0.07 : 0.2), label: e.label, lx: lx + 'px', ly: ly + 'px', lop: show ? 1 : 0 };
+    });
+    const btn = (active) => ({ color: active ? '#0a0a0a' : '#dadbdf', bg: active ? '#ffffff' : 'transparent', border: active ? '#ffffff' : 'rgba(255,255,255,0.14)' });
+    const storyBtns = [{ id: null, label: 'All connections' }, ...c.stories].map(s => ({ label: s.label, active: S.story === s.id, onClick: () => this.setState({ story: s.id }), ...btn(S.story === s.id) }));
+
+    const timeline = c.timeline.map((t, i) => ({ whenT: { ...txt(t.when), color: isPh(t.when) ? PH : '#dadbdf' }, titleT: { ...txt(t.title), color: isPh(t.title) ? PH : '#ffffff' }, textT: { ...txt(t.text), color: isPh(t.text) ? PH : '#a7aab0' }, href: t.slug ? '#/work/' + t.slug : undefined, hasLink: !!t.slug, color: t.slug && bySlug[t.slug] ? bySlug[t.slug].color : 'rgba(255,255,255,0.4)', delay: dl(i) }));
+
+    const filters = [{ id: 'all', label: 'All' }, ...c.themes].map(f => ({ label: f.label, active: S.filter === f.id, onClick: () => this.setState({ filter: f.id }), ...btn(S.filter === f.id) }));
+    const workList = (S.filter === 'all' ? P : P.filter(p => p.themes.includes(S.filter))).map((p, i) => ({ ...p, delay: dl(i) }));
+    const th = r.name === 'theme' ? T[r.id] : null;
+    const theme = th ? { ...th, projects: P.filter(p => p.themes.includes(th.id)).map((p, i) => ({ ...p, delay: dl(i) })), others: c.themes.filter(t => t.id !== th.id).map(t => T[t.id]) } : {};
+
+    const tx = S.tx, full = tx && tx.phase >= 1;
+    const doc = S.doc ? { frameEl: S.doc.href && /\.pdf$/i.test(S.doc.href) ? React.createElement(Component.PdfViewer, { src: S.doc.href, title: S.doc.title }) : S.doc.href ? React.createElement('iframe', { src: S.doc.href, title: S.doc.title, style: { flex: 1, border: 0, width: '100%', background: '#191919' } }) : null, title: S.doc.title, href: S.doc.href || undefined, hasHref: !!S.doc.href, noHref: !S.doc.href, titleT: { ...txt(S.doc.title), color: isPh(S.doc.title) ? PH : '#ffffff' }, provT: { ...txt(S.doc.provenance), color: isPh(S.doc.provenance) ? PH : '#a7aab0' } } : {};
+    const emailT = { ...txt(c.site.email), color: isPh(c.site.email) ? PH : '#ffffff' };
+
+    const isHome = r.name === 'home', known = ['home', 'work', 'theme', 'journey', 'about'].includes(r.name);
+    return {
+      site: c.site, about: c.about, headline1: c.site.headline[0], headline2: c.site.headline[1], aboutBio0: c.about.bio[0] || '',
+      navLinks, isDesktop: !mobile, isMobile: mobile, menuOpen: S.menu, menuGlyph: S.menu ? '✕' : '≡',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      modeExplore: explore, modeOverview: !explore, thumbX: explore ? 'translateX(0)' : 'translateX(100%)',
+      exploreTab: explore ? 0 : -1, overviewTab: explore ? -1 : 0,
+      exploreColor: explore ? '#ffffff' : '#7d8187', overviewColor: explore ? '#7d8187' : '#ffffff',
+      exploreLabel: vw < 420 ? '' : 'Explore', overviewLabel: vw < 420 ? '' : 'Overview',
+      setExplore: () => this.setMode('explore'), setOverview: () => this.setMode('overview'),
+      toggleKey: e => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+        e.preventDefault(); const m = explore ? 'overview' : 'explore'; this.setMode(m);
+        const b = e.currentTarget.querySelectorAll('button')[m === 'explore' ? 0 : 1]; b && b.focus();
+      },
+      mainOpacity: S.fading ? 0 : 1, mainShift: S.fading ? 'translateY(10px)' : 'none',
+      rExploreHome: isHome && explore, rExploreStage: isHome && explore && !compact, rExploreMobile: isHome && explore && compact,
+      rOverviewHome: isHome && !explore, rWork: r.name === 'work' && !r.id, rTheme: !!th, rProject: !!p0,
+      rJourney: r.name === 'journey', rAbout: r.name === 'about',
+      rMissing: !!S.c && (!known || (r.name === 'work' && r.id && !p0) || (r.name === 'theme' && !th)),
+      stageH, artifacts, stageArtifacts: artifacts.filter((_, i) => c.artifacts[i].id !== 'photo'), artLines, threads, storyChains,
+      toThreads: e => { e.preventDefault(); this.scrollToId('threads'); },
+      nowExploring: c.about.nowExploring.map(v => ({ ...txt(v), color: isPh(v) ? PH : '#dadbdf' })),
+      portraitEl: img(c.site.portrait, 'Portrait of Aidan Copeland'), hasPortrait: !!c.site.portrait, noPortrait: !c.site.portrait,
+      resumeHref: c.site.resume || undefined, resumeNote: c.site.resume ? 'PDF' : 'add PDF', resumeNoteColor: c.site.resume ? '#7d8187' : PH,
+      resumeClick: c.site.resume ? undefined : e => e.preventDefault(),
+      featured: P.filter(p => p.featured).map((p, i) => ({ ...p, delay: String((i % 2) * 100) })),
+      experience: P.filter(p => /experience/i.test(p.kind)).map((p, i) => ({ ...p, delay: dl(i) })),
+      expCols: mobile ? '1fr' : 'minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) 24px',
+      engRes: pick(['mechanical-engineering', 'footwear-research', 'authentic-intelligence']),
+      ventures: pick(['cope-custom-kicks', 'teamsplit', 'ai-automation']),
+      skills: c.skills.map((g, i) => ({ group: g.group, delay: dl(i), items: g.items.map(v => ({ ...txt(v), color: isPh(v) ? PH : '#dadbdf' })) })),
+      timeline, tlCols: mobile ? '1fr' : '150px minmax(0,1fr)',
+      filters, workList, theme,
+      p, prev, next, secCols: mobile ? '1fr' : 'minmax(0,300px) minmax(0,1fr)', coverAR: mobile ? '4/3' : '21/9',
+      ba: S.ba, baClip: `inset(0 ${100 - S.ba}% 0 0)`, baLeft: S.ba + '%', onBa: e => this.setState({ ba: +e.target.value }),
+      backClick: e => { e.preventDefault(); if (this.navCount > 0) history.back(); else { this.fresh = true; location.hash = '#/work'; } },
+      cardBasis: mobile ? '74%' : '300px', showGraph: !compact, gTicks: (c.graphTicks || []).map(t => ({ label: t.label, left: t.x + '%', tf: t.x < 12 ? 'translateX(-12px)' : t.x > 88 ? 'translateX(calc(-100% + 12px))' : 'translateX(-50%)' })), showChainsJourney: compact, gW: gWn + 'px', gH: gHn + 'px', gNodes, gEdges, storyBtns,
+      education: c.about.education.map(e => ({ ...e, datesT: { ...txt(e.dates), color: isPh(e.dates) ? PH : '#7d8187' } })),
+      approach: c.about.approach.map((a, i) => ({ ...a, num: '0' + (i + 1), delay: dl(i) })),
+      interestsT: { ...txt(c.about.interests), color: isPh(c.about.interests) ? PH : '#dadbdf' },
+      photos: c.about.photos.map((ph, i) => ({ ...ph, cap: ph.src ? '' : ph.label, srcEl: img(ph.src, ph.label, true), hasSrc: !!ph.src, delay: dl(i) })),
+      emailT, emailHref: isPh(c.site.email) ? undefined : 'mailto:' + c.site.email,
+      contactLinks: c.site.links.map(l => ({ label: l.label, href: l.href || undefined, note: l.href ? '↗' : 'add URL', noteColor: l.href ? '#7d8187' : PH })),
+      toTop: e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: this.rm ? 'auto' : 'smooth' }); },
+      txOn: !!tx, txL: (full ? 0 : tx ? tx.l : 0) + 'px', txT: (full ? 0 : tx ? tx.t : 0) + 'px',
+      txW: (full ? vw : tx ? tx.w : 0) + 'px', txH: (full ? S.vh : tx ? tx.h : 0) + 'px', txR: full ? '0px' : (tx ? tx.rad : '0px'),
+      txOp: tx && tx.phase === 2 ? 0 : 1, txTitleOp: tx && tx.phase === 1 ? 1 : 0, txTitle: tx ? tx.title : '', txGlow: tx ? tc(tx.hue, 0.35) : 'transparent',
+      docOn: !!S.doc, doc, closeDoc: () => this.setState({ doc: null }), stop: e => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>
